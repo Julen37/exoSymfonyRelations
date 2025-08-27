@@ -20,6 +20,14 @@ class Contract
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $endDate = null;
 
+    #[ORM\ManyToOne(inversedBy: '_contract')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Company $company = null;
+
+    #[ORM\ManyToOne(inversedBy: 'contracts')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Employee $_employee = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +53,30 @@ class Contract
     public function setEndDate(?\DateTime $endDate): static
     {
         $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?Company $company): static
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    public function getEmployee(): ?Employee
+    {
+        return $this->_employee;
+    }
+
+    public function setEmployee(?Employee $_employee): static
+    {
+        $this->_employee = $_employee;
 
         return $this;
     }

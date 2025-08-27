@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EmployeeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +24,17 @@ class Employee
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTime $birthDate = null;
+
+    /**
+     * @var Collection<int, Contract>
+     */
+    #[ORM\OneToMany(targetEntity: Contract::class, mappedBy: '_employee', orphanRemoval: true)]
+    private Collection $contracts;
+
+    public function __construct()
+    {
+        $this->contracts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +73,36 @@ class Employee
     public function setBirthDate(\DateTime $birthDate): static
     {
         $this->birthDate = $birthDate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contract>
+     */
+    public function getContracts(): Collection
+    {
+        return $this->contracts;
+    }
+
+    public function addContract(Contract $contract): static
+    {
+        if (!$this->contracts->contains($contract)) {
+            $this->contracts->add($contract);
+            $contract->setEmployee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContract(Contract $contract): static
+    {
+        if ($this->contracts->removeElement($contract)) {
+            // set the owning side to null (unless already changed)
+            if ($contract->getEmployee() === $this) {
+                $contract->setEmployee(null);
+            }
+        }
 
         return $this;
     }
