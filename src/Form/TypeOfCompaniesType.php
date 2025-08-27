@@ -12,7 +12,10 @@ class TypeOfCompaniesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('type')
+            ->add('type', null, [
+                'required'=>'true',
+                'attr'=>['class'=>'form form-control mb-2 mt-1', 'placeholder'=>'Type of company']
+            ])
         ;
     }
 

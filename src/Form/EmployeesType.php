@@ -12,9 +12,18 @@ class EmployeesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstName')
-            ->add('lastName')
-            ->add('birthDate')
+            ->add('firstName', null, [
+                'required'=>'true',
+                'attr'=>['class'=>'form form-control mb-2 mt-1', 'placeholder'=>'First name']
+            ])
+            ->add('lastName', null, [
+                'required'=>'true',
+                'attr'=>['class'=>'form form-control mb-2 mt-1', 'placeholder'=>'Last name']
+            ])
+            ->add('birthDate', null, [
+                'required'=>'true',
+                'attr'=>['class'=>'form form-control mb-2 mt-1']
+            ])
         ;
     }
 

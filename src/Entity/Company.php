@@ -32,6 +32,9 @@ class Company
     #[ORM\OneToMany(targetEntity: Contract::class, mappedBy: 'company', orphanRemoval: true)]
     private Collection $_contract;
 
+    #[ORM\Column]
+    private ?bool $isClosed = null;
+
     public function __construct()
     {
         $this->_contract = new ArrayCollection();
@@ -104,6 +107,18 @@ class Company
                 $contract->setCompany(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isClosed(): ?bool
+    {
+        return $this->isClosed;
+    }
+
+    public function setIsClosed(bool $isClosed): static
+    {
+        $this->isClosed = $isClosed;
 
         return $this;
     }

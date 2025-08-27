@@ -15,15 +15,25 @@ class ContractsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('startingDate')
-            ->add('endDate')
+            ->add('startingDate', null, [
+                'required'=>'true',
+                'attr'=>['class'=>'form form-control mb-2 mt-1']
+            ])
+            ->add('endDate', null, [
+                'required'=>'true',
+                'attr'=>['class'=>'form form-control mb-2 mt-1']
+            ])
             ->add('company', EntityType::class, [
                 'class' => Company::class,
                 'choice_label' => 'name',
+                'required'=>'true',
+                'attr'=>['class'=>'form form-control mb-2 mt-1']
             ])
             ->add('_employee', EntityType::class, [
                 'class' => Employee::class,
                 'choice_label' => 'firstName',
+                'required'=>'true',
+                'attr'=>['class'=>'form form-control mb-2 mt-1']
             ])
         ;
     }
