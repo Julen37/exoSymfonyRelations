@@ -45,7 +45,7 @@ final class CompanyController extends AbstractController
     #[Route('/{id}', name: 'app_company_show', methods: ['GET'])]
     public function show(Company $company): Response
     {
-        $time = date('Y-m-d');
+        $time = new \DateTime();
 
         return $this->render('company/show.html.twig', [
             'company' => $company,

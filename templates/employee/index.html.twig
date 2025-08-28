@@ -3,9 +3,11 @@
 {% block title %}Employee index{% endblock %}
 
 {% block body %}
-    <h1>Employee index</h1>
+{{ parent() }}
+<div class="container">
+    <h1 class="text-center mb-3">Employee index</h1>
 
-    <table class="table">
+    <table class="table table-dark">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,8 +25,8 @@
                 <td>{{ employee.lastName }}</td>
                 <td>{{ employee.birthDate ? employee.birthDate|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_employee_show', {'id': employee.id}) }}">show</a>
-                    <a href="{{ path('app_employee_edit', {'id': employee.id}) }}">edit</a>
+                    <a href="{{ path('app_employee_show', {'id': employee.id}) }}"class="btn btn-outline-light ">show</a>
+                    <a href="{{ path('app_employee_edit', {'id': employee.id}) }}" class="btn btn-outline-success ">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +37,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_employee_new') }}">Create new</a>
+    <a href="{{ path('app_employee_new') }}" class="btn btn-success ">Create new</a>
+</div>    
 {% endblock %}

@@ -3,9 +3,10 @@
 {% block title %}Employee{% endblock %}
 
 {% block body %}
-    <h1>Employee</h1>
+<div class="container">
+    <h1 class="text-center mb-3" >Employee : {{ employee.firstName }} {{ employee.lastName }} </h1>
 
-    <table class="table">
+    <table class="table table-dark">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -26,11 +27,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_employee_index') }}">back to list</a>
+    <a href="{{ path('app_employee_index') }}" class="btn btn-outline-dark">back to list</a>
 
-    <a href="{{ path('app_employee_edit', {'id': employee.id}) }}">edit</a>
-
-    <table class="table">
+    <a href="{{ path('app_employee_edit', {'id': employee.id}) }}" class="btn btn-success ">edit</a>
+    <h2 class="text-center mb-3" >List of contracts</h2>
+    <table class="table table-dark">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -51,4 +52,5 @@
     </table>
 
     {{ include('employee/_delete_form.html.twig') }}
+</div>
 {% endblock %}

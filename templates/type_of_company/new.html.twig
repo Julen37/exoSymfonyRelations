@@ -3,9 +3,11 @@
 {% block title %}New TypeOfCompany{% endblock %}
 
 {% block body %}
-    <h1>Create new TypeOfCompany</h1>
+<div class="container">
+    <h1>Create a new type of company</h1>
 
     {{ include('type_of_company/_form.html.twig') }}
 
-    <a href="{{ path('app_type_of_company_index') }}">back to list</a>
+    <a href="{{ path('app_type_of_company_index') }}" class="btn btn-outline-dark">back to list</a>
+</div>    
 {% endblock %}

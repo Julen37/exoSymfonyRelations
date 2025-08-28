@@ -3,9 +3,11 @@
 {% block title %}Company index{% endblock %}
 
 {% block body %}
-    <h1>Company index</h1>
+{{ parent() }}
+<div class="container">
+    <h1 class="text-center mb-3">Company index</h1>
 
-    <table class="table">
+    <table class="table table-dark">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,8 +25,8 @@
                 <td>{{ company.fondationDate ? company.fondationDate|date('Y-m-d') : '' }}</td>
                 <td>{{ company.isClosed ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('app_company_show', {'id': company.id}) }}">show</a>
-                    <a href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>
+                    <a href="{{ path('app_company_show', {'id': company.id}) }}"class="btn btn-outline-light ">show</a>
+                    <a href="{{ path('app_company_edit', {'id': company.id}) }}" class="btn btn-outline-success ">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +37,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_company_new') }}">Create new</a>
+    <a href="{{ path('app_company_new') }}" class="btn btn-success ">Create new</a>
+</div>
 {% endblock %}

@@ -3,9 +3,10 @@
 {% block title %}Company{% endblock %}
 
 {% block body %}
-    <h1>Company</h1>
+<div class="container">
+    <h1 class="text-center mb-3">Company : {{ company.name }}</h1>
 
-    <table class="table">
+    <table class="table table-dark">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -26,11 +27,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_company_index') }}">back to list</a>
+    <a href="{{ path('app_company_index') }}" class="btn btn-outline-dark">back to list</a>
 
-    <a href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>
-    
-    <table class="table">
+    <a href="{{ path('app_company_edit', {'id': company.id}) }}" class="btn btn-success ">edit</a>
+    <h2 class="text-center mb-3" >List of employees</h2>
+    <table class="table table-dark">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -39,7 +40,7 @@
                 <th>end date</th>
             </tr>
             {% for company in company.contract %}
-                {% if company.endDate > date  %}
+                {% if company.endDate <= date and company.endDate is not null %}
                     <tr>
                         <td style="color: red">{{ company.id }}</td>
                         <td style="color: red">{{ company.employee.lastName}} {{ company.employee.firstName}}</td>
@@ -58,4 +59,5 @@
         </tbody>
     </table>
     {{ include('company/_delete_form.html.twig') }}
+</div>
 {% endblock %}

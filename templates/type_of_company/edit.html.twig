@@ -3,11 +3,13 @@
 {% block title %}Edit TypeOfCompany{% endblock %}
 
 {% block body %}
+<div class="container">
     <h1>Edit TypeOfCompany</h1>
 
     {{ include('type_of_company/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_type_of_company_index') }}">back to list</a>
+    <a href="{{ path('app_type_of_company_index') }}" class="btn btn-outline-dark mb-2">back to list</a>
 
     {{ include('type_of_company/_delete_form.html.twig') }}
+</div>
 {% endblock %}
