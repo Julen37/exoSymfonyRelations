@@ -22,13 +22,14 @@ class CompanyType extends AbstractType
                 'required'=>'true',
                 'attr'=>['class'=>'form form-control mb-2 mt-1']
             ])
-            ->add('isClosed', null, [
-                'label'=> 'Complany\'s closed',
-                'attr'=>['class'=>'mx-2']
-            ])
             ->add('_type', EntityType::class, [
                 'class' => TypeOfCompany::class,
                 'choice_label' => 'type',
+                'attr'=>['class'=>'form form-control mb-2 mt-1']
+            ])
+            ->add('isClosed', null, [
+                'label'=> 'Complany\'s closed',
+                'attr'=>['class'=>'mx-2']
             ])
         ;
     }

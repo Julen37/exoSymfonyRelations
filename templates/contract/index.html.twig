@@ -11,8 +11,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>StartingDate</th>
-                <th>EndDate</th>
+                <th>Name</th>
+                <th>Starting Date</th>
+                <th>End Date</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
         {% for contract in contracts %}
             <tr>
                 <td>{{ contract.id }}</td>
+                <td>{{ contract.employee.lastName }} {{ contract.employee.firstName }}</td>
                 <td>{{ contract.startingDate ? contract.startingDate|date('Y-m-d') : '' }}</td>
                 <td>{{ contract.endDate ? contract.endDate|date('Y-m-d') : '' }}</td>
                 <td>
