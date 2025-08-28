@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Employee;
 use App\Form\EmployeeType;
+use App\Repository\ContractRepository;
 use App\Repository\EmployeeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,10 +44,13 @@ final class EmployeeController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_employee_show', methods: ['GET'])]
-    public function show(Employee $employee): Response
+    public function show($id, Employee $employee, ContractRepository $contractRepo): Response
     {
+        // $contracts = $contractRepo->getEmployee($id);
+
         return $this->render('employee/show.html.twig', [
             'employee' => $employee,
+            // 'contracts'=> $contracts,
         ]);
     }
 

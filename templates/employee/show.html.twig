@@ -30,5 +30,25 @@
 
     <a href="{{ path('app_employee_edit', {'id': employee.id}) }}">edit</a>
 
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <th>Starting date</th>
+                <th>end date</th>
+                <th>Company</th>
+            </tr>
+            {% for contract in employee.contracts %}
+                <tr>
+                    <td>{{ contract.id }}</td>
+                    <td>{{ contract.startingDate ? contract.startingDate|date('Y-m-d') : ''}}</td>
+                    <td>{{ contract.endDate ? contract.endDate|date('Y-m-d') : ''}}</td>
+                    <td>{{ contract.company.name }}</td>
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
     {{ include('employee/_delete_form.html.twig') }}
 {% endblock %}
