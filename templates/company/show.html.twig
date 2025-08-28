@@ -39,14 +39,22 @@
                 <th>end date</th>
             </tr>
             {% for company in company.contract %}
-                <tr>
-                    <td>{{ company.id }}</td>
-                    <td>{{ company.employee.lastName}} {{ company.employee.firstName}}</td>
-                    <td>{{ company.startingDate ? company.startingDate|date('Y-m-d') : ''}}</td>
-                    <td>{{ company.endDate ? company.endDate|date('Y-m-d') : ''}}</td>
-                </tr>
+                {% if company.endDate > date  %}
+                    <tr>
+                        <td style="color: red">{{ company.id }}</td>
+                        <td style="color: red">{{ company.employee.lastName}} {{ company.employee.firstName}}</td>
+                        <td style="color: red">{{ company.startingDate ? company.startingDate|date('Y-m-d') : ''}}</td>
+                        <td style="color: red">{{ company.endDate ? company.endDate|date('Y-m-d') : ''}}</td>
+                    </tr> 
+                {% else  %}
+                    <tr>
+                        <td>{{ company.id }}</td>
+                        <td>{{ company.employee.lastName}} {{ company.employee.firstName}}</td>
+                        <td>{{ company.startingDate ? company.startingDate|date('Y-m-d') : ''}}</td>
+                        <td>{{ company.endDate ? company.endDate|date('Y-m-d') : ''}}</td>
+                    </tr>
+                {% endif %}
             {% endfor %}
-            
         </tbody>
     </table>
     {{ include('company/_delete_form.html.twig') }}
