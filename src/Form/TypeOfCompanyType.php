@@ -7,14 +7,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TypeOfCompaniesType extends AbstractType
+class TypeOfCompanyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('type', null, [
                 'required'=>'true',
-                'attr'=>['class'=>'form form-control mb-2 mt-1', 'placeholder'=>'Type of company']
+                'attr'=>['class'=>'form form-control mb-2 mt-1', 'placeholder'=>'Type of Company']
             ])
         ;
     }

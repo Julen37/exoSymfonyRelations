@@ -20,7 +20,6 @@ class ContractType extends AbstractType
                 'attr'=>['class'=>'form form-control mb-2 mt-1']
             ])
             ->add('endDate', null, [
-                'required'=>'true',
                 'attr'=>['class'=>'form form-control mb-2 mt-1']
             ])
             ->add('company', EntityType::class, [
