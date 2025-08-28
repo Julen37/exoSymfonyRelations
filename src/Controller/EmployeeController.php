@@ -44,13 +44,11 @@ final class EmployeeController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_employee_show', methods: ['GET'])]
-    public function show($id, Employee $employee, ContractRepository $contractRepo): Response
+    public function show($id, Employee $employee, ): Response
     {
-        // $contracts = $contractRepo->getEmployee($id);
 
         return $this->render('employee/show.html.twig', [
             'employee' => $employee,
-            // 'contracts'=> $contracts,
         ]);
     }
 

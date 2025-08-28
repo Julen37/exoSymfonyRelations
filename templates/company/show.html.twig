@@ -29,6 +29,25 @@
     <a href="{{ path('app_company_index') }}">back to list</a>
 
     <a href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>
-
+    
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>starting date</th>
+                <th>end date</th>
+            </tr>
+            {% for company in company.contract %}
+                <tr>
+                    <td>{{ company.id }}</td>
+                    <td>{{ company.employee.lastName}} {{ company.employee.firstName}}</td>
+                    <td>{{ company.startingDate ? company.startingDate|date('Y-m-d') : ''}}</td>
+                    <td>{{ company.endDate ? company.endDate|date('Y-m-d') : ''}}</td>
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
     {{ include('company/_delete_form.html.twig') }}
 {% endblock %}
